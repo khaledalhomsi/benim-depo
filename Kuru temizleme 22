@@ -1,0 +1,39 @@
+class CleaningOrder:
+    def __init__(self, order_id, items, date):
+        self.order_id = order_id
+        self.items = items
+        self.date = date
+
+class Item:
+    def __init__(self, item_id, item_type, item_price):
+        self.item_id = item_id
+        self.item_type = item_type
+        self.item_price = item_price
+
+class DryCleaningApp:
+    def __init__(self):
+        self.orders = []
+    
+    def add_order(self, order):
+        self.orders.append(order)
+    
+    def view_orders(self):
+        for order in self.orders:
+            print("Order ID:", order.order_id)
+            print("Date:", order.date)
+            print("Items:")
+            for item in order.items:
+                print("Item ID:", item.item_id)
+                print("Item Type:", item.item_type)
+                print("Item Price:", item.item_price)
+
+app = DryCleaningApp()
+
+shirt = Item(1, "Shirt", 15.0)
+pants = Item(2, "Pants", 20.0)
+
+order = CleaningOrder(1, [shirt, pants], "2022-01-01")
+
+app.add_order(order)
+
+app.view_orders()
